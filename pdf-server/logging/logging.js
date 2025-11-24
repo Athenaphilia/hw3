@@ -1,4 +1,4 @@
-function requestLogger(req, res, next) {
+function request_logger(req, res, next) {
   // Store the start time
   const startTime = Date.now();
   
@@ -19,7 +19,7 @@ function requestLogger(req, res, next) {
   next();
 }
 
-function detailedLogger(req, res, next) {
+function detailed_logger(req, res, next) {
   const startTime = Date.now();
   const originalEnd = res.end;
   
@@ -45,6 +45,6 @@ function detailedLogger(req, res, next) {
 }
 
 module.exports = {
-  requestLogger: requestLogger,
-  detailedLogger: detailedLogger
+  request_logger: request_logger,
+  detailed_logger: detailed_logger
 };
