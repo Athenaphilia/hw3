@@ -1,19 +1,16 @@
 const fs = require('fs');
 const path = require('path');
 
+function file_checker(filename) {
+    const filePath = path.join(__dirname, "..", "documents", filename);
 
-function file_checker(req, res, next) {
-    const filePath = path.join(__dirname, "..", req.path);
-
-    fs.access(filePath, fs.constants.F_OK, (err) => {
-        if (err) {
-            return res.status(404).send('File not found');
-        }
-        next();
-    });
+    try {
+        fs.accessSync(filePath, fs.constants.F_OK);
+        return true;
+    } catch (err) {
+        return false;
+    }
 }
 
 
-module.exports = {
-    file_checker: file_checker
-}
+module.exports = file_checker;

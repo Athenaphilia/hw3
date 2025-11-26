@@ -27,4 +27,4 @@ function scan_folder() {
     return filtered;
 }
 
-exports = scan_folder;
+module.exports = scan_folder;
