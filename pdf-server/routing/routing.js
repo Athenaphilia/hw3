@@ -1,4 +1,5 @@
 const express = require('express')
+const path = require("path")
 const router = express.Router()
 
 router.get("/", (req, res) => {
@@ -11,7 +12,10 @@ router.get("/pdfList", (req, res) => {
 
 router.get("/documents/:pdfName", (req, res) => {
     const pdfName = req.params.pdfName;
-    res.sendFile(`../documents/${pdfName}`);
+    const options = {
+        root: path.join(__dirname, '..', 'documents'), // Define the root directory for relative paths
+    };
+    res.sendFile(pdfName, options);
 });
 
 module.exports = router;
