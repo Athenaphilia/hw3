@@ -1,16 +1,16 @@
 const express = require('express')
 const app = express()
 const routing = require("./routing/routing")
-const { requestLogger, detailedLogger } = require('./logging/logging');
+const { request_logger, detailed_logger } = require('./logging/logging');
+const { file_checker } = require('./validation/validation');
 
 
 const PORT = 3000
-
-app.use(requestLogger);
-
+app.use(request_logger);
+app.use(file_checker);
 app.use("/", routing);
 
-app.listen(PORT, () => {
+const server = app.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}`)
 })
 

@@ -11,7 +11,7 @@ router.get("/pdfList", (req, res) => {
 
 router.get("/documents/:pdfName", (req, res) => {
     const pdfName = req.params.pdfName;
-    res.send(`Testing: Parameter ${pdfName} received`);
+    res.sendFile(`../documents/${pdfName}`);
 });
 
 module.exports = router;
