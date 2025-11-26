@@ -1,15 +1,15 @@
 const path = require('path');
 const fs = require('fs');
 
-const documentsFolder = path.join(__dirname, '../documents')
+const documentsFolder = path.join(__dirname, '../documents');
 
-let cache = []
+let cache = [];
 let cache_date = Date.now();
 
 function scan_folder() {
     // cache is accessed if it is less than an hour old
     if (Date.now() < cache_date + (60 * 60 * 1000)) {
-        console.log("Returning Cache")
+        console.log("Returning Cache");
         return cache;
     }
     console.log("Cache is too old, updating cache");
