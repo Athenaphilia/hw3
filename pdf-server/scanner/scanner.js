@@ -1,7 +1,7 @@
 const path = require('path');
 const fs = require('fs');
 
-const documentsFolder = path.join(__dirname, '../documents');
+const documentsFolder = path.join(__dirname, '/documents');
 
 let cache = [];
 let cache_date = Date.now();
