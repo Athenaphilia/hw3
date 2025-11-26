@@ -3,7 +3,6 @@ const path = require('path');
 
 function file_checker(filename) {
     const filePath = path.join(__dirname, "..", "documents", filename);
-
     try {
         fs.accessSync(filePath, fs.constants.F_OK);
         return true;
