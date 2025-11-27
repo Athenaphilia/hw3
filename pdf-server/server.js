@@ -1,13 +1,20 @@
 const express = require('express')
 const path = require('path');
+const hbs = require('hbs');
 const routing = require("./routing/routing")
 const { request_logger, detailed_logger } = require('./logging/logging');
 const { add_document } = require('./db/db');
 const app = express()
 
-
 const PORT = 3000
+
+app.set('view engine', 'hbs');
+app.set('views', path.join(__dirname, 'views'));
+hbs.registerPartials(path.join(__dirname, 'views', 'partials'));
+
+app.use(express.json());
 app.use(request_logger);
+app.use(express.static(path.join(__dirname, 'public')));
 app.use("/", routing);
 
 let filepath = path.join(__dirname, "documents", "Test1.pdf");

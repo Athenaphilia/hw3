@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>PDF List</title>
+<link rel="stylesheet" href="/styles/main.css">
+</head>
+<body>
+{{> header}}
+
+
+<main>
+<h1>Available PDF Files</h1>
+<div class="pdf-list">
+{{#each list}}
+<div class="pdf-item">
+<h2>{{title}}</h2>
+<p>{{description}}</p>
+<a href="/documents/{{filename}}" target="_blank">View PDF</a>
+</div>
+{{/each}}
+</div>
+</main>
+</body>
+</html>

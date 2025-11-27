@@ -1,10 +1,9 @@
 const path = require('path');
 const fs = require('fs');
 
-const documentsFolder = path.join(__dirname, '/documents');
-
+const documentsFolder = path.join(__dirname, '..', 'documents');
 let cache = [];
-let cache_date = Date.now();
+let cache_date = 0; // should be as old as possible to update on first run
 
 function scan_folder() {
     // cache is accessed if it is less than an hour old

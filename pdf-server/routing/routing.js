@@ -1,5 +1,4 @@
 const express = require('express');
-const hbs = require('handle');
 const path = require('path');
 const scan_folder = require('../scanner/scanner');
 const file_checker = require('../validation/validation');
@@ -7,11 +6,17 @@ const { get_document, get_documents } = require('../db/db');
 const router = express.Router();
 
 router.get("/", (req, res) => {
-    res.send("Home page");
+    res.render('home');
 });
 
 router.get("/pdfList", (req, res) => {
-    res.send(get_documents());
+    const file_list = scan_folder();
+    let data_list = [];
+    file_list.forEach(element => {
+        const data = get_document(element);
+        data_list.push(data);
+    });
+    res.render('pdfList', { list: data_list });
 });
 
 router.get("/documents/:pdfName", (req, res) => {
