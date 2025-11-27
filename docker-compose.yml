@@ -7,9 +7,5 @@ services:
     environment:
       - NODE_ENV=production
       - PORT=3000
-    networks:
-      - app-network
-
-networks:
-  app-network:
-    external: true
+    ports:
+      - "8080:3000"
