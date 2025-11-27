@@ -1,3 +1,4 @@
+// logging.js, logging from the webserver tomb
 function request_logger(req, res, next) {
   // Store the start time
   const startTime = Date.now();
@@ -19,6 +20,7 @@ function request_logger(req, res, next) {
   next();
 }
 
+// unused
 function detailed_logger(req, res, next) {
   const startTime = Date.now();
   const originalEnd = res.end;

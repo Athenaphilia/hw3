@@ -1,3 +1,4 @@
+// db.js, handles database operations
 const Database = require("better-sqlite3");
 const db = new Database("metadata.db");
 
@@ -11,6 +12,7 @@ db.exec(`
   );
 `);
 
+// adds a document, doesn't update the record if it exists
 function add_document(filename, path, title, description) {
     const stmt = db.prepare(`
     INSERT OR IGNORE INTO documents (filename, path, title, description)
@@ -26,12 +28,13 @@ function add_document(filename, path, title, description) {
     return true;
 }
 
-
+// gets document with filename
 function get_document(name) {
     const stmt = db.prepare(`SELECT * FROM documents WHERE filename = ?`);
     return stmt.get(name);
 }
 
+// unused function, but would be useful to get all the pdf metadata
 function get_documents() {
   const stmt = db.prepare(`SELECT * FROM documents`);
   return stmt.all();

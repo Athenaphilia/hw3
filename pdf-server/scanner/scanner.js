@@ -1,3 +1,4 @@
+// scanner.js, scans a directory for pdf files
 const path = require('path');
 const fs = require('fs');
 
@@ -15,6 +16,7 @@ function scan_folder() {
     let files = fs.readdirSync(documentsFolder);
     let filtered = [];
     files.forEach(element => {
+        // only get .pdf files
         const file_split = element.split(".");
         if (file_split[file_split.length - 1] == "pdf") {
             filtered.push(element);
